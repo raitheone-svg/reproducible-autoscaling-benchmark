@@ -1,7 +1,7 @@
 # Phase-2 results (robustness)
 
-Protocol: phase2: validation-frozen; mean±95% CI over window×seed. Target SLO ≤ 0.05. Provenance: REAL:Alibaba-microservices-v2022-MSMetrics.
-Seeds [7, 17, 23]; lead times [60, 180, 300] s; 1 window(s).
+Protocol: phase2: validation-frozen; mean±95% CI over window×seed; paired bootstrap over windows. Target SLO ≤ 0.05. Provenance: REAL:Alibaba-microservices-v2022-MSMetrics.
+Seeds [7, 17, 23]; lead times [60, 180, 300] s; 1 window(s) (separated=True).
 
 
 ## Lead time H = 60 s
@@ -15,6 +15,14 @@ Seeds [7, 17, 23]; lead times [60, 180, 300] s; 1 window(s).
 | Holt (ES) | 184.483±0.0 (-0.4%) | 0.026 | 0.273 | 7.0 |
 | Delayed persistence | 185.225±0.0 | 0.017 | 0.182 | 5.0 |
 
+*Paired vs delayed-persistence baseline (window-level bootstrap):*
+| Method | Δcost % | 95% CI | p | #windows |
+|---|---|---|---|---|
+| GBDT | -3.6 | n/a | n/a | 1 |
+| Moving average | -2.83 | n/a | n/a | 1 |
+| LSTM | -2.12 | n/a | n/a | 1 |
+| Holt (ES) | -0.4 | n/a | n/a | 1 |
+
 ## Lead time H = 180 s
 
 | Method | Cost (mean±95%CI) | Test SLO | Worst-service viol. | #svc > target |
@@ -26,6 +34,14 @@ Seeds [7, 17, 23]; lead times [60, 180, 300] s; 1 window(s).
 | Delayed persistence | 186.744±0.0 | 0.028 | 0.318 | 8.0 |
 | Holt (ES) | 192.774±0.0 (+3.2%) | 0.035 | 0.409 | 8.0 |
 
+*Paired vs delayed-persistence baseline (window-level bootstrap):*
+| Method | Δcost % | 95% CI | p | #windows |
+|---|---|---|---|---|
+| LSTM | -5.71 | n/a | n/a | 1 |
+| Moving average | -2.86 | n/a | n/a | 1 |
+| GBDT | -2.23 | n/a | n/a | 1 |
+| Holt (ES) | 3.23 | n/a | n/a | 1 |
+
 ## Lead time H = 300 s
 
 | Method | Cost (mean±95%CI) | Test SLO | Worst-service viol. | #svc > target |
@@ -36,5 +52,15 @@ Seeds [7, 17, 23]; lead times [60, 180, 300] s; 1 window(s).
 | LSTM | 183.89±0.672 (+2.7%) | 0.017 | 0.238 | 6.0 |
 | GBDT | 188.475±0.0 (+5.3%) | 0.011 | 0.191 | 3.0 |
 | Holt (ES) | 200.274±0.0 (+11.8%) | 0.024 | 0.381 | 6.0 |
+
+*Paired vs delayed-persistence baseline (window-level bootstrap):*
+| Method | Δcost % | 95% CI | p | #windows |
+|---|---|---|---|---|
+| Moving average | 1.88 | n/a | n/a | 1 |
+| LSTM | 2.69 | n/a | n/a | 1 |
+| GBDT | 5.25 | n/a | n/a | 1 |
+| Holt (ES) | 11.84 | n/a | n/a | 1 |
+
+> **Note:** only one window fits the loaded trace span, so the paired bootstrap CI/p are undefined. Load more trace hours and set a higher `phase2.n_windows` to obtain a significance statement on these effects.
 
 *Oracle = perfect-forecast lower bound on cost at the SLO. ⚠ marks a frozen operating point whose mean test SLO exceeds the target.*

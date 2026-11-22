@@ -1,0 +1,61 @@
+{
+  "provenance": "REAL:Alibaba-microservices-v2022-MSMetrics",
+  "per_replica_capacity": 10.0232,
+  "target_replicas": 20.0,
+  "slo_target": 0.05,
+  "delayed_persistence": {
+    "cost": 186.7444,
+    "slo": 0.0282,
+    "headroom": 0.1
+  },
+  "hpa": {
+    "cost": 202.6051,
+    "slo": 0.0036,
+    "target_util": 0.9,
+    "actions_per_service": 14.28
+  },
+  "hpa_curve_test": [
+    {
+      "target_util": 0.9,
+      "slo": 0.0036,
+      "cost": 202.6051,
+      "actions": 14.28
+    },
+    {
+      "target_util": 0.8,
+      "slo": 0.0018,
+      "cost": 227.8271,
+      "actions": 15.1
+    },
+    {
+      "target_util": 0.7,
+      "slo": 0.0009,
+      "cost": 260.53,
+      "actions": 15.88
+    },
+    {
+      "target_util": 0.6,
+      "slo": 0.0009,
+      "cost": 304.3314,
+      "actions": 17.62
+    },
+    {
+      "target_util": 0.5,
+      "slo": 0.0,
+      "cost": 365.6277,
+      "actions": 19.58
+    },
+    {
+      "target_util": 0.4,
+      "slo": 0.0,
+      "cost": 458.2967,
+      "actions": 22.98
+    },
+    {
+      "target_util": 0.3,
+      "slo": 0.0,
+      "cost": 610.9043,
+      "actions": 28.18
+    }
+  ]
+}

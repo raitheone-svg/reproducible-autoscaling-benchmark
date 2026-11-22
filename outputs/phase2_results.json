@@ -1,5 +1,5 @@
 {
-  "protocol": "phase2: validation-frozen; mean\u00b195% CI over window\u00d7seed",
+  "protocol": "phase2: validation-frozen; mean\u00b195% CI over window\u00d7seed; paired bootstrap over windows",
   "slo_target": 0.05,
   "seeds": [
     7,
@@ -12,6 +12,7 @@
     300
   ],
   "n_windows": 1,
+  "separated_windows": true,
   "provenance": "REAL:Alibaba-microservices-v2022-MSMetrics",
   "lead_times": {
     "60": {
@@ -22,9 +23,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.017,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.05,
         "tail_worst_mean": 0.182,
         "tail_p95_mean": 0.116,
-        "tail_services_over_target_mean": 5.0
+        "tail_services_over_target_mean": 5.0,
+        "n_services": 50
       },
       "moving_average": {
         "display": "Moving average",
@@ -33,9 +37,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.03,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.136,
         "tail_worst_mean": 0.273,
         "tail_p95_mean": 0.161,
-        "tail_services_over_target_mean": 9.0
+        "tail_services_over_target_mean": 9.0,
+        "n_services": 50
       },
       "holt": {
         "display": "Holt (ES)",
@@ -44,9 +51,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.026,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.136,
         "tail_worst_mean": 0.273,
         "tail_p95_mean": 0.161,
-        "tail_services_over_target_mean": 7.0
+        "tail_services_over_target_mean": 7.0,
+        "n_services": 50
       },
       "gbdt": {
         "display": "GBDT",
@@ -55,9 +65,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.033,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.095,
         "tail_worst_mean": 0.182,
         "tail_p95_mean": 0.136,
-        "tail_services_over_target_mean": 9.0
+        "tail_services_over_target_mean": 9.0,
+        "n_services": 50
       },
       "lstm": {
         "display": "LSTM",
@@ -66,9 +79,12 @@
         "cost_ci95": 10.283,
         "slo_mean": 0.025,
         "slo_ci95": 0.028,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.108,
         "tail_worst_mean": 0.227,
         "tail_p95_mean": 0.153,
-        "tail_services_over_target_mean": 7.333
+        "tail_services_over_target_mean": 7.333,
+        "n_services": 50
       },
       "oracle": {
         "display": "Oracle (perfect)",
@@ -77,9 +93,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.0,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.0,
         "tail_worst_mean": 0.0,
         "tail_p95_mean": 0.0,
-        "tail_services_over_target_mean": 0.0
+        "tail_services_over_target_mean": 0.0,
+        "n_services": 50
       }
     },
     "180": {
@@ -90,9 +109,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.028,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.095,
         "tail_worst_mean": 0.318,
         "tail_p95_mean": 0.182,
-        "tail_services_over_target_mean": 8.0
+        "tail_services_over_target_mean": 8.0,
+        "n_services": 50
       },
       "moving_average": {
         "display": "Moving average",
@@ -101,9 +123,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.028,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.095,
         "tail_worst_mean": 0.273,
         "tail_p95_mean": 0.182,
-        "tail_services_over_target_mean": 8.0
+        "tail_services_over_target_mean": 8.0,
+        "n_services": 50
       },
       "holt": {
         "display": "Holt (ES)",
@@ -112,9 +137,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.035,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.141,
         "tail_worst_mean": 0.409,
         "tail_p95_mean": 0.252,
-        "tail_services_over_target_mean": 8.0
+        "tail_services_over_target_mean": 8.0,
+        "n_services": 50
       },
       "gbdt": {
         "display": "GBDT",
@@ -123,9 +151,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.028,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.091,
         "tail_worst_mean": 0.273,
         "tail_p95_mean": 0.136,
-        "tail_services_over_target_mean": 7.0
+        "tail_services_over_target_mean": 7.0,
+        "n_services": 50
       },
       "lstm": {
         "display": "LSTM",
@@ -134,9 +165,12 @@
         "cost_ci95": 0.715,
         "slo_mean": 0.069,
         "slo_ci95": 0.014,
+        "tail_median_mean": 0.046,
+        "tail_p90_mean": 0.156,
         "tail_worst_mean": 0.364,
         "tail_p95_mean": 0.222,
-        "tail_services_over_target_mean": 20.333
+        "tail_services_over_target_mean": 20.333,
+        "n_services": 50
       },
       "oracle": {
         "display": "Oracle (perfect)",
@@ -145,9 +179,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.0,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.0,
         "tail_worst_mean": 0.0,
         "tail_p95_mean": 0.0,
-        "tail_services_over_target_mean": 0.0
+        "tail_services_over_target_mean": 0.0,
+        "n_services": 50
       }
     },
     "300": {
@@ -158,9 +195,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.032,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.1,
         "tail_worst_mean": 0.381,
         "tail_p95_mean": 0.143,
-        "tail_services_over_target_mean": 9.0
+        "tail_services_over_target_mean": 9.0,
+        "n_services": 50
       },
       "moving_average": {
         "display": "Moving average",
@@ -169,9 +209,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.025,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.1,
         "tail_worst_mean": 0.238,
         "tail_p95_mean": 0.143,
-        "tail_services_over_target_mean": 8.0
+        "tail_services_over_target_mean": 8.0,
+        "n_services": 50
       },
       "holt": {
         "display": "Holt (ES)",
@@ -180,9 +223,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.024,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.1,
         "tail_worst_mean": 0.381,
         "tail_p95_mean": 0.169,
-        "tail_services_over_target_mean": 6.0
+        "tail_services_over_target_mean": 6.0,
+        "n_services": 50
       },
       "gbdt": {
         "display": "GBDT",
@@ -191,9 +237,12 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.011,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.048,
         "tail_worst_mean": 0.191,
         "tail_p95_mean": 0.074,
-        "tail_services_over_target_mean": 3.0
+        "tail_services_over_target_mean": 3.0,
+        "n_services": 50
       },
       "lstm": {
         "display": "LSTM",
@@ -202,9 +251,12 @@
         "cost_ci95": 0.672,
         "slo_mean": 0.017,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.095,
         "tail_worst_mean": 0.238,
         "tail_p95_mean": 0.121,
-        "tail_services_over_target_mean": 6.0
+        "tail_services_over_target_mean": 6.0,
+        "n_services": 50
       },
       "oracle": {
         "display": "Oracle (perfect)",
@@ -213,9 +265,104 @@
         "cost_ci95": 0.0,
         "slo_mean": 0.0,
         "slo_ci95": 0.0,
+        "tail_median_mean": 0.0,
+        "tail_p90_mean": 0.0,
         "tail_worst_mean": 0.0,
         "tail_p95_mean": 0.0,
-        "tail_services_over_target_mean": 0.0
+        "tail_services_over_target_mean": 0.0,
+        "n_services": 50
+      }
+    }
+  },
+  "paired_vs_baseline": {
+    "60": {
+      "moving_average": {
+        "delta_pct": -2.83,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "holt": {
+        "delta_pct": -0.4,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "gbdt": {
+        "delta_pct": -3.6,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "lstm": {
+        "delta_pct": -2.12,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      }
+    },
+    "180": {
+      "moving_average": {
+        "delta_pct": -2.86,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "holt": {
+        "delta_pct": 3.23,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "gbdt": {
+        "delta_pct": -2.23,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "lstm": {
+        "delta_pct": -5.71,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      }
+    },
+    "300": {
+      "moving_average": {
+        "delta_pct": 1.88,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "holt": {
+        "delta_pct": 11.84,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "gbdt": {
+        "delta_pct": 5.25,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
+      },
+      "lstm": {
+        "delta_pct": 2.69,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "p_value": NaN,
+        "n_windows": 1
       }
     }
   }

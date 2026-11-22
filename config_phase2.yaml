@@ -40,4 +40,5 @@ phase2:
   - 60
   - 180
   - 300
-  n_windows: 1
+  n_windows: 8
+  separated_windows: true

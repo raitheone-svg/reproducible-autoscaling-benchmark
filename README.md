@@ -12,12 +12,23 @@ of Proactive vs. Reactive Microservice Autoscaling on Production Traces."*
 **Methods compared:** Reactive HPA (delay-lagged persistence), Moving average,
 Holt exponential smoothing, Gradient-boosted trees, LSTM (optional, needs PyTorch).
 
-**Headline findings.** At 60-second resolution a simple moving average sits on the
-efficient frontier — the learned models do not provision more cheaply at equal
-reliability; the advantage of prediction is lead-time-dependent (present at 1–3
-min, reversed at 5 min); forecast accuracy does not predict deployment cost; and
-although the aggregate SLO is met, per-service tails are heavy (8 of 50 services
-miss the target). See `outputs/tables.md` and `outputs/phase2_summary.md`.
+**Headline findings.**
+- **The aggregate SLO hides per-service failure.** Although every method meets the
+  5% aggregate under-provisioning target, 8 of 50 services still miss it, with
+  worst-service violation of 27–41% (`phase2_perservice.png`, `phase2_summary.md`).
+  This aggregate-vs-per-service reliability gap is the most robust result here and
+  is independent of the small cost differences below.
+- At 60-second resolution a simple moving average sits on the efficient frontier:
+  **the learned sequence models evaluated here (GBDT, LSTM) do not provision more
+  cheaply** than the moving average at equal reliability.
+- The advantage of prediction is lead-time-dependent (present at 1–3 min, reversed
+  at 5 min), and forecast accuracy does not predict deployment cost.
+
+> **Scope of the complexity claim.** This benchmark evaluates reactive, classical,
+> and *sequence* learned models (GBDT, LSTM). It does **not** evaluate
+> graph-/call-graph-based autoscalers (e.g. GNNs); the "complexity does not pay
+> off" statement is therefore scoped to the models above, not to graph models,
+> which are future work (see `BENCHMARK_SPEC.md`).
 
 ## Install
 
@@ -44,10 +55,11 @@ synthetic — not results.**
    > The loader globs `*MSMetrics*.csv` / `*MSResource*.csv`. Keep **one** copy of
    > the table under `data/` — don't mix an extracted `.tar.gz` with the
    > `MSMetricsUpdate_*.csv`, or rows are double-counted.
-2. Run the benchmark (≈1.5 min for the committed ~2-hour slice):
+2. Run the benchmark and the robustness study:
    ```bash
-   python run_benchmark.py --config config.yaml      # Table I & II, pareto.png
-   python run_phase2.py   --config config_phase2.yaml # lead-time sweep + CIs
+   python run_benchmark.py --config config.yaml         # Table I & II, pareto.png
+   python run_phase2.py   --config config_phase2.yaml   # lead-time sweep, CIs,
+                                                        # per-service gap, bootstrap
    ```
 
 ## Results (real trace, seed 7, 50 busiest services, H = 3 min)
@@ -64,6 +76,21 @@ synthetic — not results.**
 
 Full outputs are committed under `outputs/` as reference values.
 
+## Robustness & significance (`run_phase2.py`)
+
+Sweeps lead time (1/3/5 min) and seeds, and reports:
+- **Window-level paired bootstrap** of each method's cost vs the baseline, with a
+  two-sided p-value — the defensible significance test for the small (~3%) effects.
+  It needs **several windows** to be meaningful; a 2-hour slice yields one window,
+  so the CI/p are reported as `n/a` until you load more trace hours.
+- Per-service tail reliability and the **aggregate-vs-per-service gap figure**.
+- A perfect-forecast oracle (cost lower bound at the SLO).
+
+Config knobs (`config_phase2.yaml` → `phase2:`): `seeds`, `lead_times_seconds`,
+`n_windows` (auto-capped to what the loaded span supports), `separated_windows`
+(non-adjacent windows across busy/quiet regimes). **To get a significance
+statement on the cost effects, load ≥ ~12 h of the trace and set `n_windows: 8`.**
+
 ## Reproducibility
 
 The deterministic methods (Delayed persistence, Moving average, Holt) and the data
@@ -77,7 +104,8 @@ commit, and package versions on every run. Step-by-step instructions are in
 
 ```
 run_benchmark.py        driver (Table I & II)
-run_phase2.py           robustness: lead-time × seed sweep, CIs, per-service tails
+run_phase2.py           robustness: lead-time × seed × window sweep, CIs,
+                        paired bootstrap, per-service gap, oracle
 config*.yaml            real / self-test / phase-2 configs
 src/io_demand.py        load per-microservice demand from MSMetrics (chunked, leakage-safe cohort)
 src/features.py         lead-correct forecasting features
