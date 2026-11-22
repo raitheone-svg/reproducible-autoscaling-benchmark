@@ -1,66 +1,64 @@
 # Phase-2 results (robustness)
 
 Protocol: phase2: validation-frozen; mean±95% CI over window×seed; paired bootstrap over windows. Target SLO ≤ 0.05. Provenance: REAL:Alibaba-microservices-v2022-MSMetrics.
-Seeds [7, 17, 23]; lead times [60, 180, 300] s; 1 window(s) (separated=True).
+Seeds [7, 17, 23]; lead times [60, 180, 300] s; 5 window(s) (separated=True).
 
 
 ## Lead time H = 60 s
 
 | Method | Cost (mean±95%CI) | Test SLO | Worst-service viol. | #svc > target |
 |---|---|---|---|---|
-| Oracle (perfect) | 167.72±0.0 (-9.5%) | 0.0 | 0.0 | 0.0 |
-| GBDT | 178.553±0.0 (-3.6%) | 0.033 | 0.182 | 9.0 |
-| Moving average | 179.98±0.0 (-2.8%) | 0.03 | 0.273 | 9.0 |
-| LSTM | 181.301±10.283 (-2.1%) | 0.025 | 0.227 | 7.333 |
-| Holt (ES) | 184.483±0.0 (-0.4%) | 0.026 | 0.273 | 7.0 |
-| Delayed persistence | 185.225±0.0 | 0.017 | 0.182 | 5.0 |
+| Oracle (perfect) | 201.014±29.324 (-10.8%) | 0.0 | 0.0 | 0.0 |
+| Holt (ES) | 223.166±33.081 (-0.9%) | 0.029 | 0.311 | 9.0 |
+| Delayed persistence | 225.231±32.492 | 0.019 | 0.222 | 7.2 |
+| LSTM | 227.305±31.438 (+0.9%) | 0.016 | 0.27 | 6.6 |
+| GBDT | 231.841±30.789 (+2.9%) | 0.017 | 0.278 | 7.0 |
+| Moving average | 242.634±28.768 (+7.7%) | 0.015 | 0.267 | 5.2 |
 
 *Paired vs delayed-persistence baseline (window-level bootstrap):*
 | Method | Δcost % | 95% CI | p | #windows |
 |---|---|---|---|---|
-| GBDT | -3.6 | n/a | n/a | 1 |
-| Moving average | -2.83 | n/a | n/a | 1 |
-| LSTM | -2.12 | n/a | n/a | 1 |
-| Holt (ES) | -0.4 | n/a | n/a | 1 |
+| Holt (ES) | -1.04 | [-2.88, -0.08] | 0.0 | 5 |
+| LSTM | 1.22 | [-0.22, 2.96] | 0.1392 | 5 |
+| GBDT | 3.49 | [0.48, 7.36] | 0.0 | 5 |
+| Moving average | 9.18 | [1.51, 19.92] | 0.0 | 5 |
 
 ## Lead time H = 180 s
 
 | Method | Cost (mean±95%CI) | Test SLO | Worst-service viol. | #svc > target |
 |---|---|---|---|---|
-| Oracle (perfect) | 167.72±0.0 (-10.2%) | 0.0 | 0.0 | 0.0 |
-| LSTM | 176.086±0.715 (-5.7%) | 0.069 ⚠ | 0.364 | 20.333 |
-| Moving average | 181.412±0.0 (-2.9%) | 0.028 | 0.273 | 8.0 |
-| GBDT | 182.584±0.0 (-2.2%) | 0.028 | 0.273 | 7.0 |
-| Delayed persistence | 186.744±0.0 | 0.028 | 0.318 | 8.0 |
-| Holt (ES) | 192.774±0.0 (+3.2%) | 0.035 | 0.409 | 8.0 |
+| Oracle (perfect) | 201.014±29.324 (-14.8%) | 0.0 | 0.0 | 0.0 |
+| Delayed persistence | 235.896±28.439 | 0.026 | 0.267 | 8.4 |
+| Holt (ES) | 236.514±27.518 (+0.3%) | 0.033 | 0.378 | 8.8 |
+| GBDT | 239.76±26.966 (+1.6%) | 0.019 | 0.367 | 6.2 |
+| LSTM | 239.851±26.634 (+1.7%) | 0.014 | 0.248 | 5.4 |
+| Moving average | 241.478±25.146 (+2.4%) | 0.017 | 0.311 | 5.2 |
 
 *Paired vs delayed-persistence baseline (window-level bootstrap):*
 | Method | Δcost % | 95% CI | p | #windows |
 |---|---|---|---|---|
-| LSTM | -5.71 | n/a | n/a | 1 |
-| Moving average | -2.86 | n/a | n/a | 1 |
-| GBDT | -2.23 | n/a | n/a | 1 |
-| Holt (ES) | 3.23 | n/a | n/a | 1 |
+| Holt (ES) | 0.45 | [-0.45, 1.99] | 0.6588 | 5 |
+| GBDT | 1.97 | [-0.87, 4.82] | 0.1624 | 5 |
+| LSTM | 2.11 | [0.12, 4.63] | 0.0332 | 5 |
+| Moving average | 3.16 | [0.13, 8.76] | 0.0072 | 5 |
 
 ## Lead time H = 300 s
 
 | Method | Cost (mean±95%CI) | Test SLO | Worst-service viol. | #svc > target |
 |---|---|---|---|---|
-| Oracle (perfect) | 167.429±0.0 (-6.5%) | 0.0 | 0.0 | 0.0 |
-| Delayed persistence | 179.067±0.0 | 0.032 | 0.381 | 9.0 |
-| Moving average | 182.441±0.0 (+1.9%) | 0.025 | 0.238 | 8.0 |
-| LSTM | 183.89±0.672 (+2.7%) | 0.017 | 0.238 | 6.0 |
-| GBDT | 188.475±0.0 (+5.3%) | 0.011 | 0.191 | 3.0 |
-| Holt (ES) | 200.274±0.0 (+11.8%) | 0.024 | 0.381 | 6.0 |
+| Oracle (perfect) | 200.938±29.304 (-16.5%) | 0.0 | 0.0 | 0.0 |
+| Delayed persistence | 240.572±25.331 | 0.021 | 0.318 | 6.8 |
+| LSTM | 241.358±25.318 (+0.3%) | 0.019 | 0.314 | 6.067 |
+| Moving average | 241.873±25.004 (+0.5%) | 0.02 | 0.376 | 5.8 |
+| Holt (ES) | 248.408±20.62 (+3.3%) | 0.036 | 0.4 | 8.4 |
+| GBDT | 248.502±26.338 (+3.3%) | 0.014 | 0.294 | 4.0 |
 
 *Paired vs delayed-persistence baseline (window-level bootstrap):*
 | Method | Δcost % | 95% CI | p | #windows |
 |---|---|---|---|---|
-| Moving average | 1.88 | n/a | n/a | 1 |
-| LSTM | 2.69 | n/a | n/a | 1 |
-| GBDT | 5.25 | n/a | n/a | 1 |
-| Holt (ES) | 11.84 | n/a | n/a | 1 |
-
-> **Note:** only one window fits the loaded trace span, so the paired bootstrap CI/p are undefined. Load more trace hours and set a higher `phase2.n_windows` to obtain a significance statement on these effects.
+| LSTM | 0.36 | [-0.23, 1.13] | 0.3592 | 5 |
+| Moving average | 0.61 | [0.24, 1.04] | 0.0 | 5 |
+| GBDT | 3.3 | [0.83, 5.76] | 0.0004 | 5 |
+| Holt (ES) | 4.08 | [-0.34, 9.58] | 0.1556 | 5 |
 
 *Oracle = perfect-forecast lower bound on cost at the SLO. ⚠ marks a frozen operating point whose mean test SLO exceeds the target.*
