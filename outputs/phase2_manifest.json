@@ -1,0 +1,468 @@
+{
+  "git_commit": "35974b8ed116d48c2e23278232ddce10f6f7b2e8",
+  "python": "3.14.6",
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "sklearn": "1.9.1",
+    "scipy": "1.18.1",
+    "torch": "2.15.0",
+    "matplotlib": "3.11.2",
+    "yaml": "6.0.4"
+  },
+  "config": {
+    "run": {
+      "out_dir": "outputs",
+      "seed": 7
+    },
+    "data": {
+      "mode": "alibaba",
+      "data_dir": "./data",
+      "dt_seconds": 60.0,
+      "max_services": 50,
+      "n_services": 40,
+      "duration_hours": 12,
+      "provenance": "REAL:Alibaba-microservices-v2022-MSMetrics"
+    },
+    "features": {
+      "window_seconds": 600.0,
+      "horizon_seconds": 180.0
+    },
+    "split": {
+      "val_fraction": 0.2,
+      "test_fraction": 0.2
+    },
+    "methods": [
+      "reactive",
+      "moving_average",
+      "holt",
+      "gbdt",
+      "lstm"
+    ],
+    "provision": {
+      "headrooms": [
+        0.0,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.3,
+        0.5
+      ],
+      "deadband": 0.05
+    },
+    "phase2": {
+      "seeds": [
+        7,
+        17,
+        23
+      ],
+      "lead_times_seconds": [
+        60,
+        180,
+        300
+      ],
+      "n_windows": 8,
+      "separated_windows": true
+    }
+  },
+  "windows": [
+    [
+      0,
+      100
+    ],
+    [
+      117,
+      217
+    ],
+    [
+      235,
+      335
+    ],
+    [
+      352,
+      452
+    ],
+    [
+      470,
+      570
+    ]
+  ],
+  "cohort": {
+    "sizes": {
+      "0": 50,
+      "1": 50,
+      "2": 50,
+      "3": 50,
+      "4": 50
+    },
+    "union": 83,
+    "intersection": 29,
+    "turnover": 0.651
+  },
+  "cohorts_by_window": {
+    "0": [
+      "MS_10489",
+      "MS_11461",
+      "MS_1439",
+      "MS_14409",
+      "MS_16601",
+      "MS_18671",
+      "MS_19349",
+      "MS_19528",
+      "MS_19988",
+      "MS_27211",
+      "MS_27381",
+      "MS_27721",
+      "MS_29648",
+      "MS_29860",
+      "MS_31285",
+      "MS_31543",
+      "MS_32641",
+      "MS_36544",
+      "MS_36717",
+      "MS_38464",
+      "MS_42222",
+      "MS_43157",
+      "MS_44319",
+      "MS_44734",
+      "MS_48216",
+      "MS_48534",
+      "MS_491",
+      "MS_49117",
+      "MS_49800",
+      "MS_53357",
+      "MS_53782",
+      "MS_57157",
+      "MS_57387",
+      "MS_58286",
+      "MS_58869",
+      "MS_59433",
+      "MS_60746",
+      "MS_6298",
+      "MS_63360",
+      "MS_63525",
+      "MS_66526",
+      "MS_66711",
+      "MS_67098",
+      "MS_68948",
+      "MS_69365",
+      "MS_6945",
+      "MS_70053",
+      "MS_72474",
+      "MS_73317",
+      "MS_8458"
+    ],
+    "1": [
+      "MS_11461",
+      "MS_13729",
+      "MS_14093",
+      "MS_1439",
+      "MS_14409",
+      "MS_16601",
+      "MS_18671",
+      "MS_19988",
+      "MS_27211",
+      "MS_27381",
+      "MS_27721",
+      "MS_27927",
+      "MS_2926",
+      "MS_29648",
+      "MS_29860",
+      "MS_31285",
+      "MS_34433",
+      "MS_35322",
+      "MS_36319",
+      "MS_36544",
+      "MS_38464",
+      "MS_40608",
+      "MS_42222",
+      "MS_4241",
+      "MS_43157",
+      "MS_44319",
+      "MS_47977",
+      "MS_48534",
+      "MS_48931",
+      "MS_491",
+      "MS_49800",
+      "MS_53357",
+      "MS_53782",
+      "MS_54949",
+      "MS_57157",
+      "MS_58286",
+      "MS_58869",
+      "MS_59433",
+      "MS_6298",
+      "MS_63525",
+      "MS_64177",
+      "MS_66526",
+      "MS_66711",
+      "MS_68570",
+      "MS_68948",
+      "MS_69365",
+      "MS_6945",
+      "MS_70053",
+      "MS_73317",
+      "MS_8458"
+    ],
+    "2": [
+      "MS_10489",
+      "MS_13729",
+      "MS_1439",
+      "MS_14409",
+      "MS_16601",
+      "MS_18671",
+      "MS_19988",
+      "MS_25642",
+      "MS_27211",
+      "MS_27721",
+      "MS_28535",
+      "MS_2926",
+      "MS_29648",
+      "MS_29860",
+      "MS_31285",
+      "MS_34433",
+      "MS_35322",
+      "MS_35975",
+      "MS_36319",
+      "MS_36544",
+      "MS_38464",
+      "MS_40608",
+      "MS_42222",
+      "MS_43157",
+      "MS_44319",
+      "MS_47422",
+      "MS_48534",
+      "MS_48931",
+      "MS_491",
+      "MS_49800",
+      "MS_53357",
+      "MS_53782",
+      "MS_54461",
+      "MS_54949",
+      "MS_55130",
+      "MS_57157",
+      "MS_58286",
+      "MS_59433",
+      "MS_6298",
+      "MS_63525",
+      "MS_64177",
+      "MS_66526",
+      "MS_66711",
+      "MS_68948",
+      "MS_6945",
+      "MS_70053",
+      "MS_70685",
+      "MS_7124",
+      "MS_73317",
+      "MS_8458"
+    ],
+    "3": [
+      "MS_1439",
+      "MS_14409",
+      "MS_16601",
+      "MS_1760",
+      "MS_18671",
+      "MS_19988",
+      "MS_21035",
+      "MS_27211",
+      "MS_27721",
+      "MS_28535",
+      "MS_29648",
+      "MS_29860",
+      "MS_31285",
+      "MS_31543",
+      "MS_32641",
+      "MS_35322",
+      "MS_36319",
+      "MS_36544",
+      "MS_38464",
+      "MS_40608",
+      "MS_42222",
+      "MS_43157",
+      "MS_44319",
+      "MS_48216",
+      "MS_48534",
+      "MS_48931",
+      "MS_491",
+      "MS_49800",
+      "MS_50178",
+      "MS_53357",
+      "MS_53782",
+      "MS_57157",
+      "MS_58286",
+      "MS_58493",
+      "MS_58869",
+      "MS_59433",
+      "MS_60746",
+      "MS_61136",
+      "MS_6298",
+      "MS_63360",
+      "MS_63525",
+      "MS_66526",
+      "MS_66711",
+      "MS_67098",
+      "MS_69365",
+      "MS_6945",
+      "MS_70053",
+      "MS_7129",
+      "MS_73317",
+      "MS_8458"
+    ],
+    "4": [
+      "MS_1082",
+      "MS_1439",
+      "MS_14409",
+      "MS_16601",
+      "MS_1760",
+      "MS_19349",
+      "MS_19988",
+      "MS_21035",
+      "MS_27211",
+      "MS_27381",
+      "MS_27721",
+      "MS_27927",
+      "MS_29648",
+      "MS_29860",
+      "MS_31285",
+      "MS_31543",
+      "MS_32641",
+      "MS_34325",
+      "MS_35322",
+      "MS_36544",
+      "MS_38464",
+      "MS_42222",
+      "MS_43157",
+      "MS_44319",
+      "MS_48216",
+      "MS_48534",
+      "MS_48931",
+      "MS_491",
+      "MS_49800",
+      "MS_50178",
+      "MS_53357",
+      "MS_53782",
+      "MS_57157",
+      "MS_58040",
+      "MS_58286",
+      "MS_58869",
+      "MS_59433",
+      "MS_60746",
+      "MS_6298",
+      "MS_63360",
+      "MS_63525",
+      "MS_65803",
+      "MS_66711",
+      "MS_67098",
+      "MS_69226",
+      "MS_6945",
+      "MS_70053",
+      "MS_72474",
+      "MS_73317",
+      "MS_8458"
+    ]
+  },
+  "grid_missing_minute_rate": 0.0,
+  "figure_commands": [
+    "python run_phase2.py --config config_phase2.yaml",
+    "python analyze_phase2.py"
+  ],
+  "data_files": [
+    {
+      "file": "MSMetricsUpdate_0.csv",
+      "bytes": 1141604967,
+      "sha256": "9f42789bb46efea8eb660b9867133b5e9f613bf05533535683a37f2688235247"
+    },
+    {
+      "file": "MSMetricsUpdate_1.csv",
+      "bytes": 1152759784,
+      "sha256": "bb6a2958da992e5bb945d1d31bf62f52b25c755923074d705c8ca5f1381eb348"
+    },
+    {
+      "file": "MSMetricsUpdate_10.csv",
+      "bytes": 1168559925,
+      "sha256": "a23ebc8b454449c831ea348ecdbb9a67ed5585257a66e248aac40bd2a884eb15"
+    },
+    {
+      "file": "MSMetricsUpdate_11.csv",
+      "bytes": 1169281741,
+      "sha256": "2d7266a2f95d51d91b46c0da755685431e0b2b83ed8f23312228b0d0a3ca6aa9"
+    },
+    {
+      "file": "MSMetricsUpdate_12.csv",
+      "bytes": 1170748014,
+      "sha256": "6b5b24d46b126b8ce96b3853af92c914a8b6bca11e5edd1638492887abb97181"
+    },
+    {
+      "file": "MSMetricsUpdate_13.csv",
+      "bytes": 1170104882,
+      "sha256": "76bff4efd1f67923b53ef9874bc0d0295782d7611b3c170c7fb37d5f50f1cdff"
+    },
+    {
+      "file": "MSMetricsUpdate_14.csv",
+      "bytes": 1173264555,
+      "sha256": "d7e3d7e67b2292878b498a7525a888c1a81991f51c050d76b94edd18b3831cf1"
+    },
+    {
+      "file": "MSMetricsUpdate_15.csv",
+      "bytes": 1173740324,
+      "sha256": "c937220b309def8a9fe1fe6fac68b60f1e9ef0592ce4b150a7b53d00edee42d3"
+    },
+    {
+      "file": "MSMetricsUpdate_16.csv",
+      "bytes": 1173652197,
+      "sha256": "8e7e616eb118bc21d241c18404894ba8683c54999962737cd9a406270c8e2011"
+    },
+    {
+      "file": "MSMetricsUpdate_17.csv",
+      "bytes": 1173306911,
+      "sha256": "ac9fab69ce3982c070231ea5e434b298b9fba432a938dba0d7205f332fe026be"
+    },
+    {
+      "file": "MSMetricsUpdate_18.csv",
+      "bytes": 1172857800,
+      "sha256": "bc375f41aa626ae85bba88e625fb95bf7562014f1d9b1640bd39e62d673a3c2b"
+    },
+    {
+      "file": "MSMetricsUpdate_2.csv",
+      "bytes": 1153181757,
+      "sha256": "973d5fd2514f034432fb31033865d57e0766b36d31bb5537568ff7fed5d39fb0"
+    },
+    {
+      "file": "MSMetricsUpdate_3.csv",
+      "bytes": 1153530361,
+      "sha256": "c8adec94ad42183e4512291ff5d9671cacc6ba32ac7a19f47ddf5f03422909d9"
+    },
+    {
+      "file": "MSMetricsUpdate_4.csv",
+      "bytes": 1152654110,
+      "sha256": "317c0b64948190ae537bd45ac15222829196bb540c479b46a219db79f339a5e6"
+    },
+    {
+      "file": "MSMetricsUpdate_5.csv",
+      "bytes": 1159277950,
+      "sha256": "e22ddeb235cbc66afbd3419c29193ba874a8a69ebe0bf80698fa433cb6b26c90"
+    },
+    {
+      "file": "MSMetricsUpdate_6.csv",
+      "bytes": 1167148251,
+      "sha256": "3551021d0da76dfd7657e143a65ceb14592a30be50f91a75390082527e9fe339"
+    },
+    {
+      "file": "MSMetricsUpdate_7.csv",
+      "bytes": 1167526967,
+      "sha256": "ec654a644ab63bb2ca5a441a1a073676cda4df667fce18b07eac73f8fa08beeb"
+    },
+    {
+      "file": "MSMetricsUpdate_8.csv",
+      "bytes": 1167724110,
+      "sha256": "e6d617efb2df31c1511f27f9531452c70f269ea3f3e864070ac56b7c47aba31c"
+    },
+    {
+      "file": "MSMetricsUpdate_9.csv",
+      "bytes": 1167965090,
+      "sha256": "996d0a29e8dc670efe7c7e7c891639218e91abddeba376f1920dbf5f353858b3"
+    }
+  ]
+}

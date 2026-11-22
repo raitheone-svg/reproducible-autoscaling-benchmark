@@ -17,3 +17,5 @@ env/
 .DS_Store
 .idea/
 .vscode/
+_fixtest/
+outputs_test/
