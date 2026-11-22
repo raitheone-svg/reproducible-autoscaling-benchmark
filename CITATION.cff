@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it."
+title: "A Reproducible Benchmark of Proactive Autoscaling & Workload-Prediction Methods on Production Microservice Traces"
+authors:
+  - family-names: "Rai"
+    given-names: "Akhilesh"
+  - family-names: "Bandopadhyay"
+    given-names: "Sarthak Saptarshi"
+date-released: 2026-11-20
+url: "https://github.com/raitheone-svg/reproducible-autoscaling-benchmark"

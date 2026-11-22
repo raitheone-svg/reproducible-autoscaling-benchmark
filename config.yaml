@@ -1,0 +1,33 @@
+run:
+  out_dir: outputs
+  seed: 7
+data:
+  mode: alibaba
+  data_dir: ./data
+  dt_seconds: 60.0
+  max_services: 50
+  n_services: 40
+  duration_hours: 12
+  provenance: REAL:Alibaba-microservices-v2022-MSMetrics
+features:
+  window_seconds: 600.0
+  horizon_seconds: 180.0
+split:
+  val_fraction: 0.2
+  test_fraction: 0.2
+methods:
+- reactive
+- moving_average
+- holt
+- gbdt
+- lstm
+provision:
+  headrooms:
+  - 0.0
+  - 0.05
+  - 0.1
+  - 0.15
+  - 0.2
+  - 0.3
+  - 0.5
+  deadband: 0.05

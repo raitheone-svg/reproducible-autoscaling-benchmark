@@ -1,0 +1,7 @@
+numpy
+pandas
+scikit-learn
+matplotlib
+pyyaml
+# optional: enables the LSTM method
+# torch

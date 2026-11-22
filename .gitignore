@@ -1,0 +1,19 @@
+# data (obtain separately per README; never committed)
+/data/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# virtual environments
+.venv*/
+venv/
+env/
+
+# editor / OS
+*.code-workspace
+.DS_Store
+.idea/
+.vscode/

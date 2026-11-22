@@ -1,0 +1,222 @@
+{
+  "protocol": "phase2: validation-frozen; mean\u00b195% CI over window\u00d7seed",
+  "slo_target": 0.05,
+  "seeds": [
+    7,
+    17,
+    23
+  ],
+  "lead_times_seconds": [
+    60,
+    180,
+    300
+  ],
+  "n_windows": 1,
+  "provenance": "REAL:Alibaba-microservices-v2022-MSMetrics",
+  "lead_times": {
+    "60": {
+      "reactive": {
+        "display": "Delayed persistence",
+        "n_runs": 3,
+        "cost_mean": 185.225,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.017,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.182,
+        "tail_p95_mean": 0.116,
+        "tail_services_over_target_mean": 5.0
+      },
+      "moving_average": {
+        "display": "Moving average",
+        "n_runs": 3,
+        "cost_mean": 179.98,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.03,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.273,
+        "tail_p95_mean": 0.161,
+        "tail_services_over_target_mean": 9.0
+      },
+      "holt": {
+        "display": "Holt (ES)",
+        "n_runs": 3,
+        "cost_mean": 184.483,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.026,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.273,
+        "tail_p95_mean": 0.161,
+        "tail_services_over_target_mean": 7.0
+      },
+      "gbdt": {
+        "display": "GBDT",
+        "n_runs": 3,
+        "cost_mean": 178.553,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.033,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.182,
+        "tail_p95_mean": 0.136,
+        "tail_services_over_target_mean": 9.0
+      },
+      "lstm": {
+        "display": "LSTM",
+        "n_runs": 3,
+        "cost_mean": 181.301,
+        "cost_ci95": 10.283,
+        "slo_mean": 0.025,
+        "slo_ci95": 0.028,
+        "tail_worst_mean": 0.227,
+        "tail_p95_mean": 0.153,
+        "tail_services_over_target_mean": 7.333
+      },
+      "oracle": {
+        "display": "Oracle (perfect)",
+        "n_runs": 3,
+        "cost_mean": 167.72,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.0,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.0,
+        "tail_p95_mean": 0.0,
+        "tail_services_over_target_mean": 0.0
+      }
+    },
+    "180": {
+      "reactive": {
+        "display": "Delayed persistence",
+        "n_runs": 3,
+        "cost_mean": 186.744,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.028,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.318,
+        "tail_p95_mean": 0.182,
+        "tail_services_over_target_mean": 8.0
+      },
+      "moving_average": {
+        "display": "Moving average",
+        "n_runs": 3,
+        "cost_mean": 181.412,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.028,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.273,
+        "tail_p95_mean": 0.182,
+        "tail_services_over_target_mean": 8.0
+      },
+      "holt": {
+        "display": "Holt (ES)",
+        "n_runs": 3,
+        "cost_mean": 192.774,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.035,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.409,
+        "tail_p95_mean": 0.252,
+        "tail_services_over_target_mean": 8.0
+      },
+      "gbdt": {
+        "display": "GBDT",
+        "n_runs": 3,
+        "cost_mean": 182.584,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.028,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.273,
+        "tail_p95_mean": 0.136,
+        "tail_services_over_target_mean": 7.0
+      },
+      "lstm": {
+        "display": "LSTM",
+        "n_runs": 3,
+        "cost_mean": 176.086,
+        "cost_ci95": 0.715,
+        "slo_mean": 0.069,
+        "slo_ci95": 0.014,
+        "tail_worst_mean": 0.364,
+        "tail_p95_mean": 0.222,
+        "tail_services_over_target_mean": 20.333
+      },
+      "oracle": {
+        "display": "Oracle (perfect)",
+        "n_runs": 3,
+        "cost_mean": 167.72,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.0,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.0,
+        "tail_p95_mean": 0.0,
+        "tail_services_over_target_mean": 0.0
+      }
+    },
+    "300": {
+      "reactive": {
+        "display": "Delayed persistence",
+        "n_runs": 3,
+        "cost_mean": 179.067,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.032,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.381,
+        "tail_p95_mean": 0.143,
+        "tail_services_over_target_mean": 9.0
+      },
+      "moving_average": {
+        "display": "Moving average",
+        "n_runs": 3,
+        "cost_mean": 182.441,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.025,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.238,
+        "tail_p95_mean": 0.143,
+        "tail_services_over_target_mean": 8.0
+      },
+      "holt": {
+        "display": "Holt (ES)",
+        "n_runs": 3,
+        "cost_mean": 200.274,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.024,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.381,
+        "tail_p95_mean": 0.169,
+        "tail_services_over_target_mean": 6.0
+      },
+      "gbdt": {
+        "display": "GBDT",
+        "n_runs": 3,
+        "cost_mean": 188.475,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.011,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.191,
+        "tail_p95_mean": 0.074,
+        "tail_services_over_target_mean": 3.0
+      },
+      "lstm": {
+        "display": "LSTM",
+        "n_runs": 3,
+        "cost_mean": 183.89,
+        "cost_ci95": 0.672,
+        "slo_mean": 0.017,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.238,
+        "tail_p95_mean": 0.121,
+        "tail_services_over_target_mean": 6.0
+      },
+      "oracle": {
+        "display": "Oracle (perfect)",
+        "n_runs": 3,
+        "cost_mean": 167.429,
+        "cost_ci95": 0.0,
+        "slo_mean": 0.0,
+        "slo_ci95": 0.0,
+        "tail_worst_mean": 0.0,
+        "tail_p95_mean": 0.0,
+        "tail_services_over_target_mean": 0.0
+      }
+    }
+  }
+}

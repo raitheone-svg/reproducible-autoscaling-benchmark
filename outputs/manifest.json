@@ -1,0 +1,52 @@
+{
+  "seed": 7,
+  "git_commit": "unknown",
+  "python": "3.14.6",
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "packages": {
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "sklearn": "1.9.1",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "torch": "2.15.0"
+  },
+  "config": {
+    "data": {
+      "mode": "alibaba",
+      "data_dir": "./data",
+      "dt_seconds": 60.0,
+      "max_services": 50,
+      "n_services": 40,
+      "duration_hours": 12,
+      "provenance": "REAL:Alibaba-microservices-v2022-MSMetrics"
+    },
+    "features": {
+      "window_seconds": 600.0,
+      "horizon_seconds": 180.0
+    },
+    "split": {
+      "val_fraction": 0.2,
+      "test_fraction": 0.2
+    },
+    "provision": {
+      "headrooms": [
+        0.0,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.3,
+        0.5
+      ],
+      "deadband": 0.05
+    },
+    "methods": [
+      "reactive",
+      "moving_average",
+      "holt",
+      "gbdt",
+      "lstm"
+    ]
+  }
+}

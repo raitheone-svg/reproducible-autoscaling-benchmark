@@ -1,0 +1,634 @@
+{
+  "provenance": "REAL:Alibaba-microservices-v2022-MSMetrics",
+  "slo_target": 0.05,
+  "protocol": "validation-frozen headroom; test reported",
+  "manifest": {
+    "seed": 7,
+    "git_commit": "unknown",
+    "python": "3.14.6",
+    "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+    "packages": {
+      "numpy": "2.5.5",
+      "pandas": "3.1.1",
+      "sklearn": "1.9.1",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2",
+      "torch": "2.15.0"
+    },
+    "config": {
+      "data": {
+        "mode": "alibaba",
+        "data_dir": "./data",
+        "dt_seconds": 60.0,
+        "max_services": 50,
+        "n_services": 40,
+        "duration_hours": 12,
+        "provenance": "REAL:Alibaba-microservices-v2022-MSMetrics"
+      },
+      "features": {
+        "window_seconds": 600.0,
+        "horizon_seconds": 180.0
+      },
+      "split": {
+        "val_fraction": 0.2,
+        "test_fraction": 0.2
+      },
+      "provision": {
+        "headrooms": [
+          0.0,
+          0.05,
+          0.1,
+          0.15,
+          0.2,
+          0.3,
+          0.5
+        ],
+        "deadband": 0.05
+      },
+      "methods": [
+        "reactive",
+        "moving_average",
+        "holt",
+        "gbdt",
+        "lstm"
+      ]
+    }
+  },
+  "methods": {
+    "reactive": {
+      "display": "Delayed persistence",
+      "accuracy": {
+        "mae": 5.3748,
+        "rmse": 10.6095,
+        "smape": 3.7
+      },
+      "frozen_headroom": 0.1,
+      "frozen_val_slo": 0.0325,
+      "test_cost": 186.7444,
+      "test_slo": 0.0282,
+      "test_overprov_pct": 11.5,
+      "pareto_test": [
+        {
+          "headroom": 0.0,
+          "slo": 0.3182,
+          "overprov_pct": 2.2,
+          "cost": 169.7677,
+          "actions": 2.34
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.0591,
+          "overprov_pct": 6.6,
+          "cost": 178.256,
+          "actions": 2.34
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0282,
+          "overprov_pct": 11.5,
+          "cost": 186.7444,
+          "actions": 2.34
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0191,
+          "overprov_pct": 16.5,
+          "cost": 195.2328,
+          "actions": 2.34
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.0082,
+          "overprov_pct": 21.5,
+          "cost": 203.7212,
+          "actions": 2.34
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0027,
+          "overprov_pct": 31.6,
+          "cost": 220.698,
+          "actions": 2.34
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0009,
+          "overprov_pct": 51.8,
+          "cost": 254.6515,
+          "actions": 2.34
+        }
+      ],
+      "pareto_val": [
+        {
+          "headroom": 0.0,
+          "slo": 0.355,
+          "overprov_pct": 2.0,
+          "cost": 184.6227,
+          "actions": 0.74
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.055,
+          "overprov_pct": 6.4,
+          "cost": 193.8539,
+          "actions": 0.74
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0325,
+          "overprov_pct": 11.3,
+          "cost": 203.085,
+          "actions": 0.74
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0175,
+          "overprov_pct": 16.3,
+          "cost": 212.3161,
+          "actions": 0.74
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.015,
+          "overprov_pct": 21.3,
+          "cost": 221.5473,
+          "actions": 0.74
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.005,
+          "overprov_pct": 31.3,
+          "cost": 240.0096,
+          "actions": 0.74
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0,
+          "overprov_pct": 51.5,
+          "cost": 276.9341,
+          "actions": 0.74
+        }
+      ]
+    },
+    "moving_average": {
+      "display": "Moving average",
+      "accuracy": {
+        "mae": 6.9551,
+        "rmse": 10.209,
+        "smape": 4.8
+      },
+      "frozen_headroom": 0.05,
+      "frozen_val_slo": 0.035,
+      "test_cost": 181.4124,
+      "test_slo": 0.0282,
+      "test_overprov_pct": 8.4,
+      "pareto_test": [
+        {
+          "headroom": 0.0,
+          "slo": 0.1509,
+          "overprov_pct": 3.6,
+          "cost": 172.7737,
+          "actions": 0.06
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.0282,
+          "overprov_pct": 8.4,
+          "cost": 181.4124,
+          "actions": 0.06
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0127,
+          "overprov_pct": 13.4,
+          "cost": 190.0511,
+          "actions": 0.06
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0055,
+          "overprov_pct": 18.5,
+          "cost": 198.6898,
+          "actions": 0.06
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.0036,
+          "overprov_pct": 23.7,
+          "cost": 207.3285,
+          "actions": 0.06
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0018,
+          "overprov_pct": 33.9,
+          "cost": 224.6058,
+          "actions": 0.06
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0009,
+          "overprov_pct": 54.5,
+          "cost": 259.1606,
+          "actions": 0.06
+        }
+      ],
+      "pareto_val": [
+        {
+          "headroom": 0.0,
+          "slo": 0.135,
+          "overprov_pct": 3.3,
+          "cost": 187.9252,
+          "actions": 0.0
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.035,
+          "overprov_pct": 8.1,
+          "cost": 197.3214,
+          "actions": 0.0
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0125,
+          "overprov_pct": 13.2,
+          "cost": 206.7177,
+          "actions": 0.0
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0075,
+          "overprov_pct": 18.3,
+          "cost": 216.114,
+          "actions": 0.0
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.0075,
+          "overprov_pct": 23.4,
+          "cost": 225.5102,
+          "actions": 0.0
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0,
+          "overprov_pct": 33.7,
+          "cost": 244.3027,
+          "actions": 0.0
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0,
+          "overprov_pct": 54.3,
+          "cost": 281.8878,
+          "actions": 0.0
+        }
+      ]
+    },
+    "holt": {
+      "display": "Holt (ES)",
+      "accuracy": {
+        "mae": 6.5682,
+        "rmse": 12.9433,
+        "smape": 4.4
+      },
+      "frozen_headroom": 0.15,
+      "frozen_val_slo": 0.035,
+      "test_cost": 192.7735,
+      "test_slo": 0.0345,
+      "test_overprov_pct": 15.1,
+      "pareto_test": [
+        {
+          "headroom": 0.0,
+          "slo": 0.5636,
+          "overprov_pct": 1.9,
+          "cost": 167.6292,
+          "actions": 2.98
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.1236,
+          "overprov_pct": 5.5,
+          "cost": 176.0106,
+          "actions": 2.98
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0555,
+          "overprov_pct": 10.2,
+          "cost": 184.3921,
+          "actions": 2.98
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0345,
+          "overprov_pct": 15.1,
+          "cost": 192.7735,
+          "actions": 2.98
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.0173,
+          "overprov_pct": 20.0,
+          "cost": 201.155,
+          "actions": 2.98
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0055,
+          "overprov_pct": 30.0,
+          "cost": 217.9179,
+          "actions": 2.98
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0009,
+          "overprov_pct": 49.9,
+          "cost": 251.4438,
+          "actions": 2.98
+        }
+      ],
+      "pareto_val": [
+        {
+          "headroom": 0.0,
+          "slo": 0.5775,
+          "overprov_pct": 1.5,
+          "cost": 182.0256,
+          "actions": 0.7
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.1,
+          "overprov_pct": 5.3,
+          "cost": 191.1269,
+          "actions": 0.7
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0625,
+          "overprov_pct": 10.0,
+          "cost": 200.2282,
+          "actions": 0.7
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.035,
+          "overprov_pct": 14.8,
+          "cost": 209.3294,
+          "actions": 0.7
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.0225,
+          "overprov_pct": 19.7,
+          "cost": 218.4307,
+          "actions": 0.7
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0075,
+          "overprov_pct": 29.5,
+          "cost": 236.6333,
+          "actions": 0.7
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0,
+          "overprov_pct": 49.4,
+          "cost": 273.0384,
+          "actions": 0.7
+        }
+      ]
+    },
+    "gbdt": {
+      "display": "GBDT",
+      "accuracy": {
+        "mae": 8.3872,
+        "rmse": 13.0103,
+        "smape": 6.7
+      },
+      "frozen_headroom": 0.05,
+      "frozen_val_slo": 0.0175,
+      "test_cost": 182.5842,
+      "test_slo": 0.0282,
+      "test_overprov_pct": 9.0,
+      "pareto_test": [
+        {
+          "headroom": 0.0,
+          "slo": 0.2182,
+          "overprov_pct": 4.3,
+          "cost": 173.8897,
+          "actions": 1.66
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.0282,
+          "overprov_pct": 9.0,
+          "cost": 182.5842,
+          "actions": 1.66
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0073,
+          "overprov_pct": 14.1,
+          "cost": 191.2787,
+          "actions": 1.66
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0036,
+          "overprov_pct": 19.3,
+          "cost": 199.9732,
+          "actions": 1.66
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.0009,
+          "overprov_pct": 24.4,
+          "cost": 208.6676,
+          "actions": 1.66
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0009,
+          "overprov_pct": 34.8,
+          "cost": 226.0566,
+          "actions": 1.66
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0009,
+          "overprov_pct": 55.5,
+          "cost": 260.8346,
+          "actions": 1.66
+        }
+      ],
+      "pareto_val": [
+        {
+          "headroom": 0.0,
+          "slo": 0.235,
+          "overprov_pct": 3.4,
+          "cost": 187.9176,
+          "actions": 0.56
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.0175,
+          "overprov_pct": 8.1,
+          "cost": 197.3135,
+          "actions": 0.56
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0075,
+          "overprov_pct": 13.1,
+          "cost": 206.7093,
+          "actions": 0.56
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0,
+          "overprov_pct": 18.3,
+          "cost": 216.1052,
+          "actions": 0.56
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.0,
+          "overprov_pct": 23.4,
+          "cost": 225.5011,
+          "actions": 0.56
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0,
+          "overprov_pct": 33.7,
+          "cost": 244.2929,
+          "actions": 0.56
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0,
+          "overprov_pct": 54.2,
+          "cost": 281.8764,
+          "actions": 0.56
+        }
+      ]
+    },
+    "lstm": {
+      "display": "LSTM",
+      "accuracy": {
+        "mae": 5.2171,
+        "rmse": 9.7536,
+        "smape": 4.0
+      },
+      "frozen_headroom": 0.05,
+      "frozen_val_slo": 0.05,
+      "test_cost": 175.815,
+      "test_slo": 0.0691,
+      "test_overprov_pct": 5.2,
+      "pareto_test": [
+        {
+          "headroom": 0.0,
+          "slo": 0.54,
+          "overprov_pct": 1.5,
+          "cost": 167.4429,
+          "actions": 0.26
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.0691,
+          "overprov_pct": 5.2,
+          "cost": 175.815,
+          "actions": 0.26
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0164,
+          "overprov_pct": 10.0,
+          "cost": 184.1872,
+          "actions": 0.26
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0091,
+          "overprov_pct": 14.9,
+          "cost": 192.5593,
+          "actions": 0.26
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.0036,
+          "overprov_pct": 19.9,
+          "cost": 200.9314,
+          "actions": 0.26
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0018,
+          "overprov_pct": 29.8,
+          "cost": 217.6757,
+          "actions": 0.26
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0009,
+          "overprov_pct": 49.8,
+          "cost": 251.1643,
+          "actions": 0.26
+        }
+      ],
+      "pareto_val": [
+        {
+          "headroom": 0.0,
+          "slo": 0.61,
+          "overprov_pct": 1.2,
+          "cost": 181.8783,
+          "actions": 0.1
+        },
+        {
+          "headroom": 0.05,
+          "slo": 0.05,
+          "overprov_pct": 4.9,
+          "cost": 190.9722,
+          "actions": 0.1
+        },
+        {
+          "headroom": 0.1,
+          "slo": 0.0225,
+          "overprov_pct": 9.6,
+          "cost": 200.0661,
+          "actions": 0.1
+        },
+        {
+          "headroom": 0.15,
+          "slo": 0.0125,
+          "overprov_pct": 14.5,
+          "cost": 209.1601,
+          "actions": 0.1
+        },
+        {
+          "headroom": 0.2,
+          "slo": 0.005,
+          "overprov_pct": 19.4,
+          "cost": 218.254,
+          "actions": 0.1
+        },
+        {
+          "headroom": 0.3,
+          "slo": 0.0,
+          "overprov_pct": 29.4,
+          "cost": 236.4418,
+          "actions": 0.1
+        },
+        {
+          "headroom": 0.5,
+          "slo": 0.0,
+          "overprov_pct": 49.3,
+          "cost": 272.8175,
+          "actions": 0.1
+        }
+      ]
+    }
+  }
+}
