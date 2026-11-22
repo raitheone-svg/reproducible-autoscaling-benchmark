@@ -54,8 +54,9 @@ def _per_service_tail(b, yhat_all, te, h):
         m = svc == s
         if m.sum():
             rates[s] = float(viol[m].mean()); denom[s] = int(m.sum())
-    r = np.array(list(rates.values())) if rates else np.array([0.0])
-    dn = np.array(list(denom.values())) if denom else np.array([0])
+    ids = list(rates.keys())
+    r = np.array([rates[s] for s in ids]) if ids else np.array([0.0])
+    dn = np.array([denom[s] for s in ids]) if ids else np.array([0])
     return dict(worst=round(float(r.max()), 4),
                 p95=round(float(np.quantile(r, 0.95)), 4),
                 p90=round(float(np.quantile(r, 0.90)), 4),
@@ -63,6 +64,8 @@ def _per_service_tail(b, yhat_all, te, h):
                 n_services=int(len(r)),
                 n_over_target=int((r > SLO_TARGET).sum()),
                 denom_min=int(dn.min()), denom_median=int(np.median(dn)),
+                svc_ids=[str(s) for s in ids],
+                denoms=[int(denom[s]) for s in ids],
                 rates=[round(float(x), 4) for x in r])
 
 
@@ -264,6 +267,7 @@ def main():
                 ps.append(dict(window=w, lead_s=hmid, method=name, seed=seeds[si] if si < len(seeds) else si,
                                n_services=t["n_services"], n_over_target=t["n_over_target"],
                                worst=t["worst"], p95=t["p95"], denom_median=t["denom_median"],
+                               svc_ids=t.get("svc_ids", []), denoms=t.get("denoms", []),
                                rates=t["rates"]))
     json.dump(ps, open(os.path.join(out_dir, "phase2_perservice.json"), "w"), indent=2)
 

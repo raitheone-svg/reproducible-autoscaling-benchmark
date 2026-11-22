@@ -172,6 +172,13 @@ def load_phase2(cfg):
                 tmax = hi if tmax is None else max(tmax, hi)
         windows, min_win, n_eff = _window_bounds(tmin, tmax, cfg)
         cuts = [(w0, w0 + int(train_frac * (w1 - w0)), w1) for (w0, w1) in windows]
+        # timestamp assertion: each window's cohort is selected strictly from its
+        # training period, which ends before that window's validation/test region.
+        for (w0, ct, w1) in cuts:
+            val_start = w0 + int(train_frac * (w1 - w0))
+            assert ct <= val_start, (
+                f"cohort cutoff {ct} must not reach window {w0}-{w1} val/test "
+                f"(starts at {val_start})")
         # pass 1: EXACT per-(window, service, minute) totals over TRAINING periods only
         tparts = []
         for p in files:
