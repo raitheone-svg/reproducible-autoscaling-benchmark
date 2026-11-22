@@ -275,6 +275,7 @@ def main():
                         platform=platform.platform(), packages=_versions(),
                         config=cfg, windows=windows, cohort=agg["cohort"],
                         cohorts_by_window=info["cohorts"],
+                        split_boundaries=info.get("split_boundaries", {}),
                         grid_missing_minute_rate=agg["grid_missing_minute_rate"],
                         figure_commands=["python run_phase2.py --config config_phase2.yaml",
                                          "python analyze_phase2.py"],

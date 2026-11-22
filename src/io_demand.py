@@ -172,13 +172,9 @@ def load_phase2(cfg):
                 tmax = hi if tmax is None else max(tmax, hi)
         windows, min_win, n_eff = _window_bounds(tmin, tmax, cfg)
         cuts = [(w0, w0 + int(train_frac * (w1 - w0)), w1) for (w0, w1) in windows]
-        # timestamp assertion: each window's cohort is selected strictly from its
-        # training period, which ends before that window's validation/test region.
-        for (w0, ct, w1) in cuts:
-            val_start = w0 + int(train_frac * (w1 - w0))
-            assert ct <= val_start, (
-                f"cohort cutoff {ct} must not reach window {w0}-{w1} val/test "
-                f"(starts at {val_start})")
+        # The cohort cutoff ct bounds pass 1 below; the leakage check against the
+        # ACTUAL per-service validation/test origins is performed after df is built
+        # (see _check_split_boundaries), not against a formula-derived boundary.
         # pass 1: EXACT per-(window, service, minute) totals over TRAINING periods only
         tparts = []
         for p in files:
@@ -219,6 +215,9 @@ def load_phase2(cfg):
             df = pd.DataFrame(columns=["msname", "t_step", "demand", "mem"])
         df = df.rename(columns={"msname": "service"})[["service", "t_step", "demand", "mem"]]
 
+    # leakage check on the ACTUAL per-service split timestamps (see helper)
+    split_boundaries = _check_split_boundaries(df, cohorts, windows, train_frac, cfg)
+
     # cohort turnover (auditable)
     present = [cohorts[wi] for wi in sorted(cohorts) if cohorts[wi]]
     union_n = len(set().union(*present)) if present else 0
@@ -228,8 +227,50 @@ def load_phase2(cfg):
                 cohort_sizes={wi: len(cohorts[wi]) for wi in cohorts},
                 cohort_union=union_n, cohort_intersection=inter_n,
                 cohort_turnover=round(1.0 - inter_n / max(1, union_n), 3),
+                split_boundaries=split_boundaries,
                 cohorts={wi: sorted(cohorts[wi]) for wi in cohorts})
     return df, dt, windows, cohorts, info
+
+
+def _check_split_boundaries(df, cohorts, windows, train_frac, cfg):
+    """Verify prospective cohort selection against the ACTUAL per-service splits.
+
+    The cohort for each window is selected only from that window's training
+    period (raw minutes with ``t_step < ct``). Here we re-run the SAME
+    ``blocked_split`` used for evaluation on each window's cohort timelines and
+    confirm that the latest cohort-selection minute (``ct - 1``) strictly
+    precedes the earliest validation and test target produced per service --
+    i.e. no minute used to pick the cohort is ever a validation or test sample.
+    This replaces the earlier assertion that compared the cutoff with a boundary
+    recomputed from the same formula (a tautology). The boundary timestamps are
+    returned so the run manifest can publish them.
+    """
+    from .split import blocked_split
+    bounds = {}
+    for wi, (w0, w1) in enumerate(windows):
+        svc = cohorts.get(wi, set())
+        if not svc:
+            continue
+        mw = df[(df["t_step"] >= w0) & (df["t_step"] < w1) & (df["service"].isin(svc))]
+        if mw.empty:
+            continue
+        mw = mw.sort_values(["service", "t_step"]).reset_index(drop=True)
+        tr, va, te = blocked_split(mw, cfg)
+        ct = w0 + int(train_frac * (w1 - w0))      # cohort-selection cutoff (exclusive)
+        sel_max = ct - 1                            # latest minute used for selection
+        first_val = int(mw.loc[va, "t_step"].min()) if bool(va.any()) else None
+        first_test = int(mw.loc[te, "t_step"].min()) if bool(te.any()) else None
+        if first_val is not None:
+            assert sel_max < first_val, (
+                f"window {wi} [{w0},{w1}): cohort-selection minute {sel_max} "
+                f"reaches first validation target {first_val}")
+        if first_test is not None:
+            assert sel_max < first_test, (
+                f"window {wi} [{w0},{w1}): cohort-selection minute {sel_max} "
+                f"reaches first test target {first_test}")
+        bounds[wi] = dict(w0=int(w0), w1=int(w1), cohort_selection_max=int(sel_max),
+                          first_val_ts=first_val, first_test_ts=first_test)
+    return bounds
 
 
 def _load_synth(cfg):
